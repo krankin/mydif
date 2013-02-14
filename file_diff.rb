@@ -19,8 +19,18 @@ class FileDiff
   # file1 - Name of the first file
   # file2 - Name of the second file
   def initialize(file1, file2)
-    @arr1 = File.readlines(file1)
-    @arr2 = File.readlines(file2)
+    @arr1 = load_file(file1)
+    @arr2 = load_file(file2)
+  end
+
+  # Public: Load files into array
+  # Strips newline characters from the end of each line
+  # 
+  # file - The name of the file to load
+  # 
+  # Returns array of cleaned lines
+  def load_file(file_name)
+    arr = File.readlines(file_name).map { |x| x.chomp }
   end
 
   # Public: Take the difference between the first file and the second file 
